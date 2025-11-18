@@ -1,2 +1,2 @@
-# kyberpevence
+# Kyberpevence
 Materiály ke školením kyberprevence
