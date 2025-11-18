@@ -1,5 +1,5 @@
 # Materiály ke školením kyberprevence
-Materiály ke školením Václava Maněnx
+Materiály ke školením Václava Maněny
 ## Digitální stopa
 [Pracovní listy](digitalni_stopa_pracovni_listy.pdf)
 
