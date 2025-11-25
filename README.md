@@ -5,7 +5,7 @@ Materiály ke školením Václava Maněny
 
 [Selfie](centrum_robotiky_selfie.jpg)
 ## Další materiály
-[Nástěnka Kyberprevence v době AI](https://vman.cz/kyberprevence) se hodí učitelům, dětem i rodičům.
+[Kyberprevence v době AI](https://vman.cz/kyberprevence) se hodí učitelům, dětem i rodičům.
 
 Další materiály a informace najdete na [manena.info](https://manena.info).
 ## Licence
