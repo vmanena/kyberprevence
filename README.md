@@ -12,3 +12,7 @@ Další materiály a informace najdete na [manena.info](https://manena.info).
 **Materiály můžete bez problému používat a šířit, když je nebudete upravovat.**
 
 Pracovní listy a další materiály jsem vytvořil i pomocí děl, jejichž licence neumožňuje, abyste je libovolně upravovali podle svých potřeb. To se týká hlavně použitých obrázků. V praxi to znamená, že jsem např. do pracovního listu umístil obrázek, ke kterému mám zakoupenou licenci. Vy můžete pracovní list použít jak je, ale bohužel není možné ho upravovat. Pokud si chctete materiály upravovat podle svých potřeb, použijte klidně moje výtvory jako inspiraci, ale s vlastními obrázky. 
+
+Pokud mě chcete podpořit, můžete mi koupit virtuální kafe.
+
+[![Kupte mi kafe](https://img.shields.io/badge/coffee-podpo%C5%99te%20m%C4%9B-yellow?style=for-the-badge&logo=buy-me-a-coffee&label=Kupte%20mi%20kafe)](https://www.buymeacoffee.com/vmanena)
