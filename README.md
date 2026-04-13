@@ -6,7 +6,9 @@ Materiály ke školením Václava Maněny
 [Selfie](centrum_robotiky_selfie.jpg)
 ## Podvodné zprávy
 [Pracovní list k podvodným e-mailům](podvodne_e-maily_pracovni_list.pdf)
+
 [Podvodný e-mail k analýze č. 1](podvodny_e-mail_1.png)
+
 [Podvodný e-mail k analýze č. 2](podvodny_e-mail_2.png)
 
 ## Další materiály
