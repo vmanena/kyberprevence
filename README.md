@@ -7,9 +7,9 @@ Materiály ke školením Václava Maněny
 ## Podvodné zprávy
 [Pracovní list k podvodným e-mailům](podvodne_e-maily_pracovni_list.pdf)
 
-[Podvodný e-mail k analýze č. 1](podvodny_e-mail_1.png)
+[Podvodný e-mail k analýze 1](podvodny_e-mail_1.png)
 
-[Podvodný e-mail k analýze č. 2](podvodny_e-mail_2.png)
+[Podvodný e-mail k analýze 2](podvodny_e-mail_2.png)
 
 ## Další materiály
 [Kyberprevence v době AI](https://vman.cz/kyberprevence) se hodí učitelům, dětem i rodičům.
