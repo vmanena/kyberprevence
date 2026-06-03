@@ -14,6 +14,8 @@ Materiály ke školením Václava Maněny
 ## Další materiály
 [Kyberprevence v době AI](https://vman.cz/kyberprevence) se hodí učitelům, dětem i rodičům.
 
+[České školy a AI Act v roce 2026](AI_Act_souhrn.pdf)
+
 Další materiály a informace najdete na [manena.info](https://manena.info).
 ## Licence
 **Materiály můžete bez problému používat a šířit, když je nebudete upravovat.**
