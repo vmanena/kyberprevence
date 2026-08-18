@@ -29,6 +29,18 @@
     margin:28px 0 10px;padding:18px 20px;border-radius:18px;background:#191919;color:#fff;
     font-size:1.03rem;
   }
+  .qr-box{
+    margin:24px 0 6px;padding:20px;border-radius:22px;background:#fff;
+    border:1px solid var(--line);box-shadow:0 8px 26px rgba(0,0,0,.05);
+    display:flex;align-items:center;gap:20px;
+  }
+  .qr-box img{
+    width:150px;height:150px;border-radius:12px;background:#fff;
+    border:1px solid #eee;
+  }
+  .qr-copy h2{margin:0 0 6px;font-size:1.35rem}
+  .qr-copy p{margin:0;color:#555;max-width:540px}
+  .qr-url{margin-top:8px;font-size:.9rem;color:#777;word-break:break-all}
   .notice strong{color:#ffd36a}
   .section-title{font-size:1.7rem;margin:42px 0 8px}
   .section-sub{margin:0 0 20px;color:var(--muted)}
@@ -110,7 +122,12 @@
   .footer{margin-top:22px;color:#777;font-size:.9rem}
   .privacy{font-size:.9rem;color:#666;margin-top:12px}
   .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95em}
-  @media(max-width:700px){.grid,.links{grid-template-columns:1fr}.wrap{padding-top:12px}header{padding-top:26px}}
+  @media(max-width:700px){
+    .grid,.links{grid-template-columns:1fr}
+    .wrap{padding-top:12px}
+    header{padding-top:26px}
+    .qr-box{display:none}
+  }
 </style>
 </head>
 <body>
@@ -123,6 +140,17 @@
   <div class="notice">
     <strong>Důležité:</strong> tahle stránka je výuková demonstrace. Údaje zobrazené níže se v této verzi nikam neodesílají ani neukládají.
   </div>
+
+  <section class="qr-box" aria-label="QR kód pro otevření stránky na mobilu">
+    <img
+      src="fingerprint-qr.png"
+      alt="QR kód pro otevření stránky Co o vás vím na mobilu">
+    <div class="qr-copy">
+      <h2>Vyzkoušejte to i na mobilu</h2>
+      <p>Naskenujte QR kód a porovnejte, co o vás prozradí jiné zařízení nebo jiný prohlížeč. Výsledky se mohou lišit.</p>
+      <div class="qr-url">vmanena.github.io/kyberprevence/fingerprint/</div>
+    </div>
+  </section>
 
   <h2 class="section-title">Tohle mi prozradil prohlížeč sám</h2>
   <p class="section-sub">Některé údaje jsou přesné, jiné záměrně omezené nebo mohou být prohlížečem upravené kvůli ochraně soukromí.</p>
