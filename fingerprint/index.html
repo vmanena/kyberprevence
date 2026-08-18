@@ -40,7 +40,28 @@
   }
   .qr-copy h2{margin:0 0 6px;font-size:1.35rem}
   .qr-copy p{margin:0;color:#555;max-width:540px}
-  .qr-url{margin-top:8px;font-size:.9rem;color:#777;word-break:break-all}
+  .qr-url{
+    margin-top:8px;font-size:.95rem;color:#555;word-break:break-all;
+    display:inline-block;cursor:pointer;font-weight:750;
+    transition:transform .18s ease,color .18s ease;
+    transform-origin:left center;
+  }
+  .qr-url:hover{color:#191919;transform:scale(1.08)}
+  .url-overlay{
+    position:fixed;inset:0;z-index:9999;background:rgba(246,244,239,.97);
+    display:none;align-items:center;justify-content:center;padding:30px;
+    cursor:pointer;text-align:center;
+  }
+  .url-overlay.show{display:flex}
+  .url-overlay-inner{max-width:1200px}
+  .url-overlay-label{
+    font-size:clamp(1rem,2vw,1.5rem);color:#666;margin-bottom:18px;font-weight:650
+  }
+  .url-overlay-address{
+    font-size:clamp(2.8rem,8vw,7.5rem);line-height:.95;font-weight:850;
+    letter-spacing:-.055em;word-break:break-word;color:#191919;
+  }
+  .url-overlay-hint{margin-top:28px;color:#777;font-size:.95rem}
   .notice strong{color:#ffd36a}
   .section-title{font-size:1.7rem;margin:42px 0 8px}
   .section-sub{margin:0 0 20px;color:var(--muted)}
@@ -148,7 +169,7 @@
     <div class="qr-copy">
       <h2>Vyzkoušejte to i na mobilu</h2>
       <p>Naskenujte QR kód a porovnejte, co o vás prozradí jiné zařízení nebo jiný prohlížeč. Výsledky se mohou lišit.</p>
-      <div class="qr-url">vman.cz/fingerprint</div>
+      <div class="qr-url" id="bigUrlTrigger" role="button" tabindex="0" title="Kliknutím zobrazíte adresu přes celou obrazovku">vman.cz/fingerprint</div>
     </div>
   </section>
 
@@ -223,6 +244,14 @@
   </div>
 
   <p class="footer">Výuková demonstrace • Žádné cookies • Žádná analytika • Žádné ukládání výsledků na této stránce • Vytvořil <a href="https://manena.info/" target="_blank" rel="noopener noreferrer">Maněna.info</a></p>
+</div>
+
+<div class="url-overlay" id="urlOverlay" aria-hidden="true">
+  <div class="url-overlay-inner">
+    <div class="url-overlay-label">Otevřete si v telefonu</div>
+    <div class="url-overlay-address">vman.cz/fingerprint</div>
+    <div class="url-overlay-hint">Kliknutím nebo klávesou Esc zavřete</div>
+  </div>
 </div>
 
 <script>
@@ -385,6 +414,31 @@ $('#geoBtn').addEventListener('click', () => {
     },
     {enableHighAccuracy:true, timeout:12000, maximumAge:0}
   );
+});
+
+const bigUrlTrigger = $('#bigUrlTrigger');
+const urlOverlay = $('#urlOverlay');
+
+function showBigUrl() {
+  urlOverlay.classList.add('show');
+  urlOverlay.setAttribute('aria-hidden', 'false');
+}
+
+function hideBigUrl() {
+  urlOverlay.classList.remove('show');
+  urlOverlay.setAttribute('aria-hidden', 'true');
+}
+
+bigUrlTrigger?.addEventListener('click', showBigUrl);
+bigUrlTrigger?.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    showBigUrl();
+  }
+});
+urlOverlay?.addEventListener('click', hideBigUrl);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') hideBigUrl();
 });
 
 init();
