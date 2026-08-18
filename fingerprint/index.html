@@ -1,1 +1,351 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Co o vás vím?</title>
+<style>
+  :root{
+    --bg:#f6f4ef; --card:#ffffff; --text:#191919; --muted:#666;
+    --line:#ddd8cf; --shadow:0 14px 40px rgba(0,0,0,.08);
+    --green:#e7f6e8; --greenText:#1c5e2a;
+    --yellow:#fff4cf; --yellowText:#725400;
+    --blue:#e8f1ff; --blueText:#24548c;
+    --red:#fde8e8; --redText:#8b2929;
+    --accent:#ef6b3a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.5;
+  }
+  .wrap{max-width:980px;margin:auto;padding:28px 18px 72px}
+  header{padding:38px 0 26px}
+  h1{font-size:clamp(2.5rem,7vw,5.4rem);line-height:.95;letter-spacing:-.055em;margin:0 0 22px}
+  .lead{font-size:clamp(1.15rem,2.5vw,1.55rem);max-width:760px;margin:0;color:#333}
+  .notice{
+    margin:28px 0 10px;padding:18px 20px;border-radius:18px;background:#191919;color:#fff;
+    font-size:1.03rem;
+  }
+  .notice strong{color:#ffd36a}
+  .section-title{font-size:1.7rem;margin:42px 0 8px}
+  .section-sub{margin:0 0 20px;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;padding:19px 20px;
+    box-shadow:0 4px 18px rgba(0,0,0,.035);
+    opacity:0;transform:translateY(10px);animation:reveal .45s ease forwards;
+  }
+  .card:nth-child(2){animation-delay:.10s}.card:nth-child(3){animation-delay:.20s}
+  .card:nth-child(4){animation-delay:.30s}.card:nth-child(5){animation-delay:.40s}
+  .card:nth-child(6){animation-delay:.50s}.card:nth-child(7){animation-delay:.60s}
+  .card:nth-child(8){animation-delay:.70s}
+  @keyframes reveal{to{opacity:1;transform:none}}
+  .tag{
+    display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 10px;
+    font-size:.76rem;font-weight:750;margin-bottom:12px
+  }
+  .browser{background:var(--green);color:var(--greenText)}
+  .estimate{background:var(--yellow);color:var(--yellowText)}
+  .derived{background:var(--blue);color:var(--blueText)}
+  .permission{background:var(--red);color:var(--redText)}
+  .kicker{font-size:.86rem;color:var(--muted);margin-bottom:3px}
+  .value{font-size:1.45rem;font-weight:760;line-height:1.2;word-break:break-word}
+  details{margin-top:12px;border-top:1px solid #eee;padding-top:10px;color:#555}
+  summary{cursor:pointer;font-weight:650;color:#444}
+  .panel{
+    margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:22px;
+    padding:22px;box-shadow:var(--shadow)
+  }
+  .panel h3{margin:0 0 8px;font-size:1.35rem}
+  .panel p{margin:7px 0;color:#555}
+  button{
+    appearance:none;border:0;border-radius:14px;background:#191919;color:#fff;
+    font:inherit;font-weight:760;padding:13px 18px;cursor:pointer;margin-top:10px;
+  }
+  button:hover{filter:brightness(1.12)}
+  button.secondary{background:#fff;color:#191919;border:1px solid #bbb}
+  .result{margin-top:16px;display:none}
+  .result.show{display:block}
+  .bigpoint{
+    margin:48px 0;padding:28px;border-radius:26px;background:#191919;color:#fff;
+  }
+  .bigpoint .small{color:#bbb;font-size:1rem;margin:0 0 8px}
+  .bigpoint .boom{font-size:clamp(1.8rem,4vw,3.1rem);line-height:1.05;font-weight:820;letter-spacing:-.035em;margin:0}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+  .legend .tag{margin:0}
+  .links{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .linkcard{
+    display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);
+    border-radius:18px;padding:18px;transition:.15s transform ease,.15s box-shadow ease
+  }
+  .linkcard:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.07)}
+  .linkcard strong{display:block;font-size:1.08rem;margin-bottom:5px}
+  .promo{
+    margin:48px 0 10px;padding:28px;border-radius:26px;background:#fff;
+    border:1px solid var(--line);box-shadow:var(--shadow);
+  }
+  .promo-eyebrow{
+    margin:0 0 8px;font-size:.82rem;font-weight:800;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--accent);
+  }
+  .promo h2{margin:0 0 10px;font-size:clamp(1.7rem,3vw,2.35rem);letter-spacing:-.025em}
+  .promo p{max-width:720px;margin:0 0 18px;color:#555;font-size:1.05rem}
+  .promo a{
+    display:inline-block;text-decoration:none;border-radius:14px;background:#191919;color:#fff;
+    font-weight:760;padding:13px 18px;
+  }
+  .promo a:hover{filter:brightness(1.12)}
+  .footer{margin-top:30px;color:#777;font-size:.9rem}
+  .privacy{font-size:.9rem;color:#666;margin-top:12px}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.95em}
+  @media(max-width:700px){.grid,.links{grid-template-columns:1fr}.wrap{padding-top:12px}header{padding-top:26px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Co o vás vím?</h1>
+    <p class="lead">Jen jste otevřeli tuto stránku. Nic jste mi nevyplnili a na nic jste nemuseli kliknout. Přesto už o vašem zařízení něco vím.</p>
+  </header>
 
+  <div class="notice">
+    <strong>Důležité:</strong> tahle stránka je výuková demonstrace. Údaje zobrazené níže se v této verzi nikam neodesílají ani neukládají.
+  </div>
+
+  <h2 class="section-title">Tohle mi prozradil prohlížeč sám</h2>
+  <p class="section-sub">Některé údaje jsou přesné, jiné záměrně omezené nebo mohou být prohlížečem upravené kvůli ochraně soukromí.</p>
+
+  <div class="grid" id="basicGrid"></div>
+
+  <div class="bigpoint">
+    <p class="small">A teď ta podstatná část.</p>
+    <p class="boom">Ani jedna informace nemusí být zajímavá sama o sobě. Zajímavé to začne být, když je spojíme.</p>
+    <div class="legend">
+      <span class="tag browser">🟢 prohlížeč mi to sdělil</span>
+      <span class="tag estimate">🟡 odhad</span>
+      <span class="tag derived">🔵 vypočteno z údajů</span>
+      <span class="tag permission">🔴 výslovně povoleno</span>
+    </div>
+  </div>
+
+  <h2 class="section-title">Chcete mi říct ještě víc?</h2>
+  <p class="section-sub">Tady už nic nedělám automaticky. Je na vás, jestli budete pokračovat.</p>
+
+  <section class="panel">
+    <span class="tag estimate">🟡 odhad z IP adresy</span>
+    <h3>Co může prozradit vaše veřejná IP adresa?</h3>
+    <p>IP adresa může umožnit odhadnout poskytovatele připojení a přibližnou oblast, odkud se připojujete. Není to totéž jako GPS.</p>
+    <button id="ipBtn">Zjistit údaje z IP adresy</button>
+    <div class="result" id="ipResult"></div>
+    <p class="privacy">Po kliknutí se odešle požadavek službě <span class="mono">ipwho.is</span>. Ta tedy uvidí vaši IP adresu. Právě proto tento krok nespouštím automaticky.</p>
+  </section>
+
+  <section class="panel">
+    <span class="tag permission">🔴 vyžaduje vaše svolení</span>
+    <h3>A co přesná poloha?</h3>
+    <p>Tu mi prohlížeč bez vašeho souhlasu nedá. Pokud budete pokračovat, měl by se zobrazit systémový dotaz na povolení polohy.</p>
+    <button id="geoBtn">Požádat o přesnou polohu</button>
+    <div class="result" id="geoResult"></div>
+  </section>
+
+  <h2 class="section-title">Chcete se v tom pošťourat víc?</h2>
+  <p class="section-sub">Tyto služby jdou dál a ukážou podrobnější informace o prohlížeči a jeho fingerprintu.</p>
+
+  <div class="links">
+    <a class="linkcard" href="https://browserleaks.com/" target="_blank" rel="noopener noreferrer">
+      <strong>BrowserLeaks ↗</strong>
+      Technický pohled na to, co prohlížeč odhaluje.
+    </a>
+    <a class="linkcard" href="https://amiunique.org/" target="_blank" rel="noopener noreferrer">
+      <strong>AmIUnique ↗</strong>
+      Jak charakteristická je kombinace vlastností vašeho prohlížeče?
+    </a>
+    <a class="linkcard" href="https://coveryourtracks.eff.org/" target="_blank" rel="noopener noreferrer">
+      <strong>Cover Your Tracks ↗</strong>
+      Výukový test EFF zaměřený na tracking a fingerprinting.
+    </a>
+    <a class="linkcard" href="https://webtracecheck.com/" target="_blank" rel="noopener noreferrer">
+      <strong>WebTraceCheck ↗</strong>
+      Přehledný test fingerprintu, síťových údajů a dalších stop, které prohlížeč během návštěvy odhaluje.
+    </a>
+  </div>
+
+  <aside class="promo">
+    <p class="promo-eyebrow">Maněna.info</p>
+    <h2>Baví vás podobné praktické ukázky?</h2>
+    <p>Na <strong>manena.info</strong> najdete další materiály o AI, kyberbezpečnosti, soukromí a technologiích ve škole.</p>
+    <a href="https://manena.info/" target="_blank" rel="noopener noreferrer">Navštívit manena.info →</a>
+  </aside>
+
+  <p class="footer">Výuková demonstrace • Žádné cookies • Žádná analytika • Žádné ukládání výsledků na této stránce • Vytvořil <a href="https://manena.info/" target="_blank" rel="noopener noreferrer">Maněna.info</a></p>
+</div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const safe = (v, fallback='Nezjištěno') => (v === undefined || v === null || v === '') ? fallback : v;
+
+function card(label, value, how, type='browser') {
+  const el = document.createElement('article');
+  el.className = 'card';
+  const icons = {browser:'🟢', estimate:'🟡', derived:'🔵', permission:'🔴'};
+  const labels = {
+    browser:'prohlížeč mi to sdělil',
+    estimate:'odhad',
+    derived:'vypočteno z údajů',
+    permission:'výslovně povoleno'
+  };
+  el.innerHTML = `
+    <span class="tag ${type}">${icons[type]} ${labels[type]}</span>
+    <div class="kicker">${label}</div>
+    <div class="value">${value}</div>
+    <details><summary>Jak jsem to zjistil?</summary><p>${how}</p></details>
+  `;
+  return el;
+}
+
+function browserName() {
+  const ua = navigator.userAgent;
+  if (/Edg\//.test(ua)) return 'Microsoft Edge';
+  if (/OPR\//.test(ua)) return 'Opera';
+  if (/Firefox\//.test(ua)) return 'Firefox';
+  if (/CriOS\//.test(ua)) return 'Chrome na iOS';
+  if (/FxiOS\//.test(ua)) return 'Firefox na iOS';
+  if (/Chrome\//.test(ua) && !/Edg\//.test(ua)) return 'Google Chrome';
+  if (/Safari\//.test(ua) && /Version\//.test(ua)) return 'Safari';
+  return 'Prohlížeč se nepodařilo spolehlivě určit';
+}
+
+function platformGuess() {
+  const ua = navigator.userAgent;
+  const p = navigator.platform || '';
+  if (/iPad/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return 'iPad / iPadOS';
+  if (/iPhone/.test(ua)) return 'iPhone / iOS';
+  if (/Android/.test(ua)) return 'Android';
+  if (/Win/.test(p) || /Windows/.test(ua)) return 'Windows';
+  if (/Mac/.test(p) || /Macintosh/.test(ua)) return 'macOS';
+  if (/Linux/.test(p) || /Linux/.test(ua)) return 'Linux';
+  return safe(p, 'Neurčeno');
+}
+
+function webGLInfo() {
+  try {
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!gl) return 'WebGL není dostupné';
+    const ext = gl.getExtension('WEBGL_debug_renderer_info');
+    if (ext) {
+      const renderer = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
+      return renderer || 'WebGL dostupné';
+    }
+    return gl.getParameter(gl.RENDERER) || 'WebGL dostupné';
+  } catch(e) {
+    return 'Nepodařilo se zjistit';
+  }
+}
+
+function init() {
+  const g = $('#basicGrid');
+  const langs = navigator.languages?.length ? navigator.languages.join(', ') : navigator.language;
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const touch = navigator.maxTouchPoints > 0 ? `ano (${navigator.maxTouchPoints} dotykových bodů)` : 'ne';
+  const screenInfo = `${screen.width} × ${screen.height} px`;
+  const viewport = `${window.innerWidth} × ${window.innerHeight} px`;
+  const dpr = window.devicePixelRatio || 1;
+  const colorDepth = screen.colorDepth ? `${screen.colorDepth} bitů` : 'Nezjištěno';
+  const cores = safe(navigator.hardwareConcurrency);
+  const memory = navigator.deviceMemory ? `přibližně ${navigator.deviceMemory} GB` : 'prohlížeč tento údaj neposkytl';
+
+  const items = [
+    ['Prohlížeč', browserName(), 'Čtu informace, které prohlížeč zpřístupňuje stránce. Přesné určení může být záměrně omezené.', 'derived'],
+    ['Zařízení / systém', platformGuess(), 'Jde o odhad z údajů o platformě, User-Agentu a dotykovém ovládání.', 'derived'],
+    ['Jazyky', safe(langs), 'Vlastnost navigator.languages udává preferované jazyky nastavené v prohlížeči.', 'browser'],
+    ['Časové pásmo', safe(tz), 'JavaScriptové Intl API mi zpřístupňuje časové pásmo používané prohlížečem.', 'browser'],
+    ['Rozlišení obrazovky', screenInfo, 'Objekt screen poskytuje šířku a výšku obrazovky v CSS pixelech.', 'browser'],
+    ['Velikost stránky', viewport, 'Prohlížeč mi sděluje rozměr aktuálního zobrazovacího prostoru stránky.', 'browser'],
+    ['Dotykové ovládání', touch, 'navigator.maxTouchPoints říká, kolik současných dotyků zařízení hlásí.', 'browser'],
+    ['Logické procesory', `${cores}`, 'navigator.hardwareConcurrency vrací počet logických procesorů dostupných prohlížeči. Nemusí odpovídat přesnému počtu fyzických jader.', 'browser'],
+    ['Operační paměť', memory, 'Některé prohlížeče poskytují jen hrubý, záměrně nepřesný odhad RAM pomocí navigator.deviceMemory. Jiné jej neposkytují vůbec.', 'browser'],
+    ['Grafika / WebGL', webGLInfo(), 'WebGL může zpřístupnit informace o grafickém subsystému. Prohlížeče je mohou kvůli ochraně soukromí omezovat.', 'browser'],
+    ['Hustota pixelů', `${dpr}×`, 'devicePixelRatio vyjadřuje poměr fyzických pixelů k CSS pixelům.', 'browser'],
+    ['Barevná hloubka', colorDepth, 'screen.colorDepth udává barevnou hloubku, kterou prohlížeč hlásí stránce.', 'browser'],
+  ];
+
+  items.forEach(i => g.appendChild(card(...i)));
+}
+
+$('#ipBtn').addEventListener('click', async () => {
+  const btn = $('#ipBtn');
+  const out = $('#ipResult');
+  btn.disabled = true;
+  btn.textContent = 'Zjišťuji…';
+  try {
+    const r = await fetch('https://ipwho.is/');
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const d = await r.json();
+    if (d.success === false) throw new Error(d.message || 'API lookup failed');
+
+    const location = [d.city, d.region, d.country].filter(Boolean).join(', ');
+    const postal = d.postal ? `PSČ ${d.postal}` : 'PSČ nezjištěno';
+    const isp = d.connection?.isp || d.connection?.org || 'Nezjištěno';
+    const timezone = d.timezone?.id || 'Nezjištěno';
+    const coords = (typeof d.latitude === 'number' && typeof d.longitude === 'number')
+      ? `${d.latitude.toFixed(4)}, ${d.longitude.toFixed(4)}`
+      : 'Nezjištěno';
+
+    out.innerHTML = `
+      <div class="grid">
+        ${card('Veřejná IP adresa', safe(d.ip), 'Tento údaj poskytla externí služba ipwho.is podle síťového požadavku.', 'estimate').outerHTML}
+        ${card('Přibližná oblast', safe(location), 'Jde o geolokaci IP adresy, nikoli přesnou polohu zařízení. Může se výrazně lišit od místa, kde skutečně jste.', 'estimate').outerHTML}
+        ${card('Poštovní směrovací číslo', postal, 'PSČ je odhad přiřazený k IP adrese. Neznamená to, že se právě v této poštovní oblasti skutečně nacházíte.', 'estimate').outerHTML}
+        ${card('Odhadnuté souřadnice', coords, 'Jde o bod spojený s IP adresou v geolokační databázi. Není to GPS poloha vašeho zařízení a může být vzdálený i desítky či stovky kilometrů.', 'estimate').outerHTML}
+        ${card('Poskytovatel / síť', safe(isp), 'Údaj je odvozen ze síťových a registračních informací spojených s veřejnou IP adresou.', 'estimate').outerHTML}
+        ${card('Časové pásmo podle IP', safe(timezone), 'Externí služba odhaduje časové pásmo z geolokace vaší IP adresy.', 'estimate').outerHTML}
+      </div>`;
+    out.classList.add('show');
+  } catch(e) {
+    out.innerHTML = '<p><strong>Nepodařilo se údaje načíst.</strong> To je mimochodem dobrá připomínka, proč nechceme stavět celé školení na jedné externí službě.</p>';
+    out.classList.add('show');
+  } finally {
+    btn.textContent = 'Zkusit znovu';
+    btn.disabled = false;
+  }
+});
+
+$('#geoBtn').addEventListener('click', () => {
+  const out = $('#geoResult');
+  if (!navigator.geolocation) {
+    out.innerHTML = '<p><strong>Tento prohlížeč Geolocation API nenabízí.</strong></p>';
+    out.classList.add('show');
+    return;
+  }
+  out.innerHTML = '<p>Čekám na vaše rozhodnutí v systémovém dialogu prohlížeče…</p>';
+  out.classList.add('show');
+
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      const {latitude, longitude, accuracy} = pos.coords;
+      out.innerHTML = `
+        <div class="grid">
+          ${card('Zeměpisná šířka', latitude.toFixed(6), 'Tuto hodnotu poskytlo zařízení až po vašem výslovném souhlasu.', 'permission').outerHTML}
+          ${card('Zeměpisná délka', longitude.toFixed(6), 'Tuto hodnotu poskytlo zařízení až po vašem výslovném souhlasu.', 'permission').outerHTML}
+          ${card('Udávaná přesnost', `± ${Math.round(accuracy)} m`, 'Geolocation API kromě souřadnic poskytuje také odhad přesnosti měření.', 'permission').outerHTML}
+        </div>
+        <p class="privacy">Souřadnice zůstaly v tomto prohlížeči. Tato stránka je nikam neposlala.</p>`;
+    },
+    err => {
+      const msg = err.code === 1 ? 'Přístup k poloze jste nepovolili.' :
+                  err.code === 2 ? 'Zařízení nedokázalo polohu určit.' :
+                  'Zjišťování polohy trvalo příliš dlouho.';
+      out.innerHTML = `<p><strong>${msg}</strong> A přesně tak to má být: bez souhlasu se k přesné poloze nedostanu.</p>`;
+    },
+    {enableHighAccuracy:true, timeout:12000, maximumAge:0}
+  );
+});
+
+init();
+</script>
+</body>
+</html>
