@@ -1,4 +1,4 @@
-# Materiály ke školením kyberprevence
+# Pomůcky ke školením kyberprevence
 Materiály a pomůcky ke školením Václava Maněny
 ## Digitální stopa
 [Fingerprint: Co o vás vědí stránky a sociální sítě?](fingerprint/index.html)
