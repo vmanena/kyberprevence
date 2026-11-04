@@ -2,7 +2,7 @@
 
 Zápatí neobsahuje název ani popis konkrétní pomůcky. Zachovávejte autorství, přiznání použití AI, odkazy a pořadí tlačítek. Použijte pouze u pomůcek vytvořených s pomocí AI.
 
-HTML vložte za hlavní obsah stránky. CSS přidejte do stylů stránky. Zápatí je statické a funguje i bez JavaScriptu. Na úzké obrazovce se obsah a odkazy přirozeně zalomí. Vzor je zatím nasazen pouze v Po kouskách; při změně vzoru je potřeba aktualizovat jeho vložené kopie.
+HTML vložte za hlavní obsah stránky. CSS přidejte do stylů stránky. Zápatí je statické a funguje i bez JavaScriptu. Na úzké obrazovce se obsah a odkazy přirozeně zalomí. Vzor je nasazen v Po kouskách a v simulátoru rodičovské skupiny; při změně vzoru je potřeba aktualizovat jeho vložené kopie.
 
 ```html
 <footer class="site-footer"><div class="footer-about"><p>Vytvořil Václav Maněna s pomocí umělé inteligence.</p><p>Chcete podpořit tvorbu dalších pomůcek? <a href="https://www.buymeacoffee.com/vmanena">Kupte mi virtuální kafe.</a></p></div><div class="footer-links"><a href="https://www.buymeacoffee.com/vmanena">☕ Kupte mi kafe</a><a href="https://vmanena.github.io/kyberprevence/">Další pomůcky a materiály →</a></div></footer>
