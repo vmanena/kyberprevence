@@ -412,7 +412,7 @@ $('#geoBtn').addEventListener('click', () => {
           ${card('Udávaná přesnost', `± ${Math.round(accuracy)} m`, 'Geolocation API kromě souřadnic poskytuje také odhad přesnosti měření.', 'permission').outerHTML}
         </div>
         <p class="privacy">Souřadnice zůstaly v tomto prohlížeči. Tato stránka je nikam neposlala.</p>
-        <a class="map-link" href="https://www.openstreetmap.org/?mlat=${latitude.toFixed(6)}&amp;mlon=${longitude.toFixed(6)}#map=17/${latitude.toFixed(6)}/${longitude.toFixed(6)}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Zobrazit polohu na OpenStreetMap ↗</a>
+        <a class="map-link" href="https://www.openstreetmap.org/?mlat=${latitude.toFixed(6)}&amp;mlon=${longitude.toFixed(6)}#map=17/${latitude.toFixed(6)}/${longitude.toFixed(6)}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Zobrazit na mapě ↗</a>
         <p class="privacy">Otevřením mapy předáte zjištěné souřadnice službě OpenStreetMap. Značka ukazuje polohu s přesností uvedenou výše.</p>`;
     },
     err => {
