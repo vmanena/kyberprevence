@@ -7,9 +7,7 @@ Materiály a pomůcky ke školením Václava Maněny
 
 [Selfie](centrum_robotiky_selfie.jpg)
 ## Digitální hygiena
-[Simulátor rodičovské skupiny](rodicovska-skupina/index.html)
-
-Fiktivní rodičovský chat s humorem ukazuje informační zahlcení. Mezi běžnými zprávami se objevují užitečné tipy k bezpečnosti a soukromí.
+[Simulátor rodičovské skupiny](rodicovska-skupina/index.html). Fiktivní rodičovský chat s humorem ukazuje informační zahlcení. Mezi běžnými zprávami se objevují užitečné tipy k bezpečnosti a soukromí.
 
 ## Podvodné zprávy
 [Pracovní list k podvodným e-mailům](podvodne_e-maily_pracovni_list.pdf)
