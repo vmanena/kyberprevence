@@ -152,6 +152,8 @@
 
   .qr-trigger{padding:0;margin:0;background:transparent;flex-shrink:0;cursor:zoom-in;line-height:0}.qr-trigger:hover{filter:none}.qr-trigger:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
   #qrDialog{border:0;border-radius:20px;padding:20px;max-width:calc(100vw - 32px);text-align:center;background:#fff}#qrDialog::backdrop{background:rgba(0,0,0,.75)}#qrDialog img{display:block;width:min(70vw,70vh,650px);height:auto;background:#fff}#qrDialog button{margin-top:12px}
+
+  .map-link{display:inline-block;margin-top:10px;padding:13px 18px;border-radius:14px;background:#191919;color:#fff;font-weight:760;text-decoration:none}.map-link:hover{filter:brightness(1.12)}.map-link:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -409,7 +411,9 @@ $('#geoBtn').addEventListener('click', () => {
           ${card('Zeměpisná délka', longitude.toFixed(6), 'Tuto hodnotu poskytlo zařízení až po vašem výslovném souhlasu.', 'permission').outerHTML}
           ${card('Udávaná přesnost', `± ${Math.round(accuracy)} m`, 'Geolocation API kromě souřadnic poskytuje také odhad přesnosti měření.', 'permission').outerHTML}
         </div>
-        <p class="privacy">Souřadnice zůstaly v tomto prohlížeči. Tato stránka je nikam neposlala.</p>`;
+        <p class="privacy">Souřadnice zůstaly v tomto prohlížeči. Tato stránka je nikam neposlala.</p>
+        <a class="map-link" href="https://www.openstreetmap.org/?mlat=${latitude.toFixed(6)}&amp;mlon=${longitude.toFixed(6)}#map=17/${latitude.toFixed(6)}/${longitude.toFixed(6)}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Zobrazit polohu na OpenStreetMap ↗</a>
+        <p class="privacy">Otevřením mapy předáte zjištěné souřadnice službě OpenStreetMap. Značka ukazuje polohu s přesností uvedenou výše.</p>`;
     },
     err => {
       const msg = err.code === 1 ? 'Přístup k poloze jste nepovolili.' :
