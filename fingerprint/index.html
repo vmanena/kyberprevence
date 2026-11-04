@@ -149,6 +149,9 @@
     header{padding-top:26px}
     .qr-box{display:none}
   }
+
+  .qr-trigger{padding:0;margin:0;background:transparent;flex-shrink:0;cursor:zoom-in;line-height:0}.qr-trigger:hover{filter:none}.qr-trigger:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+  #qrDialog{border:0;border-radius:20px;padding:20px;max-width:calc(100vw - 32px);text-align:center;background:#fff}#qrDialog::backdrop{background:rgba(0,0,0,.75)}#qrDialog img{display:block;width:min(70vw,70vh,650px);height:auto;background:#fff}#qrDialog button{margin-top:12px}
 </style>
 </head>
 <body>
@@ -163,9 +166,9 @@
   </div>
 
   <section class="qr-box" aria-label="QR kód pro otevření stránky na mobilu">
-    <img
-      src="fingerprint-qr.png"
-      alt="QR kód pro otevření stránky Co o vás vím na mobilu">
+    <button type="button" class="qr-trigger" id="qrTrigger" aria-label="Zvětšit QR kód" aria-haspopup="dialog"><img
+      src="fingerprint-qr.svg"
+      alt="QR kód pro otevření stránky Co o vás vím na mobilu"></button>
     <div class="qr-copy">
       <h2>Vyzkoušejte to i na mobilu</h2>
       <p>Naskenujte QR kód a porovnejte, co o vás prozradí jiné zařízení nebo jiný prohlížeč. Výsledky se mohou lišit.</p>
@@ -254,6 +257,8 @@
   </div>
 </div>
 
+
+<dialog id="qrDialog" aria-label="Zvětšený QR kód"><img src="fingerprint-qr.svg" alt="QR kód: https://vmanena.github.io/kyberprevence/fingerprint/index.html"><button type="button" id="qrClose">Zavřít</button></dialog>
 <script>
 const $ = (s) => document.querySelector(s);
 const safe = (v, fallback='Nezjištěno') => (v === undefined || v === null || v === '') ? fallback : v;
@@ -440,6 +445,11 @@ urlOverlay?.addEventListener('click', hideBigUrl);
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') hideBigUrl();
 });
+
+const qrDialog = $('#qrDialog');
+$('#qrTrigger').addEventListener('click', () => qrDialog.showModal());
+$('#qrClose').addEventListener('click', () => qrDialog.close());
+qrDialog.addEventListener('click', () => qrDialog.close());
 
 init();
 </script>
