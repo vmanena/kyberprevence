@@ -1,6 +1,8 @@
 # Pomůcky ke školením kyberprevence
 Materiály a pomůcky ke školením Václava Maněny
 ## Digitální stopa
+[Po kouskách: digitální mozaika](po-kouskach/index.html). Dva fiktivní profily (dítě a dospělý), dotazník a vyhodnocení s vysvětlením stop. Pro děti i dospělé.
+
 [Fingerprint: Co o vás vědí stránky a sociální sítě?](fingerprint/index.html)
 
 [Pracovní listy](digitalni_stopa_pracovni_listy.pdf)
