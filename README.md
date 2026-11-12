@@ -8,6 +8,9 @@ Materiály a pomůcky ke školením Václava Maněny
 [Pracovní listy](digitalni_stopa_pracovni_listy.pdf)
 
 [Selfie](centrum_robotiky_selfie.jpg)
+## Hesla a bezpečnost
+[Hesloměr](https://vmanena.github.io/heslomer/). Otestujete sílu hesla nebo PINu a vygenerujte si bezpečné heslo.
+
 ## Digitální hygiena
 [Simulátor rodičovské skupiny](rodicovska-skupina/index.html). Fiktivní rodičovský chat s humorem ukazuje informační zahlcení. Mezi běžnými zprávami se objevují užitečné tipy k bezpečnosti a soukromí.
 
